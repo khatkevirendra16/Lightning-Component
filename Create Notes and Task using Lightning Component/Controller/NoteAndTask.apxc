@@ -1,0 +1,29 @@
+public class NoteAndTask{
+    @AuraEnabled
+    public static Note createNote (String title, String body, String aid) {
+        Note n = new Note();
+            n.title = title;
+            n.Body = body;
+            //n.ParentId = '0017F00000A6nrwQAB';
+            n.ParentId = aid;
+        insert n;
+        return n;
+    }
+           
+    @AuraEnabled
+    public static Task createTask (String title, String body, String aid, String cid, String ddate) {
+         Task t = new Task();                             
+            t.WhatId = aid ;
+            //t.WhoId =  cid;
+            t.Type = 'Follow Up';
+            t.OwnerId = UserInfo.getUserId();
+            //t.OwnerId = '0057F000000e8lHQAQ';
+            t.Status = 'Not Started';
+            t.Priority = 'Normal';
+            t.Description = body.replaceAll('<[^>]+>',' ');  
+            t.Subject = title;
+            t.ActivityDate = date.valueof(ddate);
+       insert t;
+       return t;
+    }
+}
