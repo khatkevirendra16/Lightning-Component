@@ -1,0 +1,37 @@
+<aura:component controller="NoteAndTask" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >	
+    <ltng:require styles="{!$Resource.SLDS + '/assets/styles/salesforce-lightning-design-system.min.css'}" />	
+    
+    <aura:attribute name="subject" type="String" default="My Notes"/>
+    <aura:attribute name="notebody" type="string" default="Enter Notes details, Enter Notes details " />
+    <aura:attribute name="parentid" type="string" />
+    <aura:attribute name="today" type="Date" default=""/>  
+    <aura:attribute name="chktask" type="Boolean" default="false"/>    
+    
+    <!-- Form Start -->    
+     <div class="container">
+    	<form class="slds-form--stacked">
+            <div class="slds-form-element slds-is-required">
+                <div class="slds-form-element__control">
+                     <ui:inputText label="Title of Note: " value="{!v.subject}" required="true"/>
+                </div>
+                <div class="slds-form-element__control">
+                     <ui:inputText label="Body of Note: " value="{!v.notebody}" size="500" required="true"/>
+                </div>
+                <div class="slds-form-element__control">
+                    <ui:inputText label="Account/Contact Id: " value="{!v.parentid}" required="true" placeholder="Enter Account/ Contact record Id" />
+                </div>
+                <div class="slds-form-element__control">
+                 	 <ui:inputCheckbox label="Create Task?" value="{!v.chktask}"/>
+                </div>   
+                <div class="slds-form-element__control">
+                 	<!-- Date Picker -->
+    				<ui:inputDate value="{!v.today}" label="Due Date" class="slds-input" displayDatePicker="true" />
+                </div>
+            </div>
+            <div class="slds-form-element__control">
+                <!-- Submit Button-->
+                <lightning:button class="slds-button_success" variant="brand" label="Submit" onclick="{!c.CreateNote }" />
+            </div>	
+        </form> 
+    </div>    
+</aura:component>
