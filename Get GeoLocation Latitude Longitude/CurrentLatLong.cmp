@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="comLat" type="string" />
+    <aura:attribute name="comLong" type="string" />    
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />
+    
+    <aura:text value="Latitude: "/>
+    	<ui:outputText value="{!v.comLat}" />    <br/>
+    <aura:text value="Longitude: "/>
+    	<ui:outputText value="{!v.comLong}" />    
+</aura:component>
